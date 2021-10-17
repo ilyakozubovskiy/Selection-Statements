@@ -94,7 +94,6 @@ namespace SelectionStatments
             {
                 Console.WriteLine("You are too young to drive, drink, or retire.");
             }
-
         }
 
         /// <summary>
@@ -362,15 +361,15 @@ namespace SelectionStatments
         {
             if (number == int.MinValue)
             {
-                number = Math.Abs(number + 1).ToString().Length;
+                number = Math.Abs(number + 1).ToString(CultureInfo.InvariantCulture).Length;
             }
             else if (number == int.MaxValue)
             {
-                number = Math.Abs(number - 1).ToString().Length;
+                number = Math.Abs(number - 1).ToString(CultureInfo.InvariantCulture).Length;
             }
             else
             {
-                number = Math.Abs(number).ToString().Length;
+                number = Math.Abs(number).ToString(CultureInfo.InvariantCulture).Length;
             }
 
             return (byte)number;
@@ -385,9 +384,9 @@ namespace SelectionStatments
         {
            int res = number switch
             {
-                int.MinValue => Math.Abs(number + 1).ToString().Length,
-                int.MaxValue => Math.Abs(number - 1).ToString().Length,
-                _ => Math.Abs(number).ToString().Length
+                int.MinValue => Math.Abs(number + 1).ToString(CultureInfo.InvariantCulture).Length,
+                int.MaxValue => Math.Abs(number - 1).ToString(CultureInfo.InvariantCulture).Length,
+                _ => Math.Abs(number).ToString(CultureInfo.InvariantCulture).Length
             };
            return (byte)res;
         }
