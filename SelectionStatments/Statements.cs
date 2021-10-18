@@ -365,7 +365,7 @@ namespace SelectionStatments
             }
             else if (number == int.MaxValue)
             {
-                number = Math.Abs(number - 1).ToString(CultureInfo.InvariantCulture).Length;
+                number = Math.Abs(number).ToString(CultureInfo.InvariantCulture).Length;
             }
             else
             {
@@ -385,7 +385,7 @@ namespace SelectionStatments
            int res = number switch
             {
                 int.MinValue => Math.Abs(number + 1).ToString(CultureInfo.InvariantCulture).Length,
-                int.MaxValue => Math.Abs(number - 1).ToString(CultureInfo.InvariantCulture).Length,
+                int.MaxValue => Math.Abs(number).ToString(CultureInfo.InvariantCulture).Length,
                 _ => Math.Abs(number).ToString(CultureInfo.InvariantCulture).Length
             };
            return (byte)res;
