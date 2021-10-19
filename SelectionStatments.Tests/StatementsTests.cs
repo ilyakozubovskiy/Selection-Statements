@@ -145,7 +145,7 @@ namespace SelectionStatements.Tests
 
         [TestCase(int.MinValue, ExpectedResult = 10)]
         [TestCase(int.MaxValue, ExpectedResult = 10)]
-        [TestCase(-1101321234, ExpectedResult = 10)]
+        [TestCase(-1101123234, ExpectedResult = 10)]
         [TestCase(-101123234, ExpectedResult = 9)]
         [TestCase(-33123543, ExpectedResult = 8)]
         [TestCase(3123543, ExpectedResult = 7)]

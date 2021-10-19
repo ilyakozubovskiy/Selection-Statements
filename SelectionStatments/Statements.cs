@@ -358,21 +358,58 @@ namespace SelectionStatments
         /// <param name="number">Source integer.</param>
         /// <returns>The length of the integer's string presentation.</returns>
         public static byte GetLengthWithCascadedIfElse(int number)
-        {
+        {   
             if (number == int.MinValue)
             {
-                number = Math.Abs(number + 1).ToString(CultureInfo.InvariantCulture).Length;
+                return 10;
             }
             else if (number == int.MaxValue)
             {
-                number = Math.Abs(number).ToString(CultureInfo.InvariantCulture).Length;
-            }
-            else
-            {
-                number = Math.Abs(number).ToString(CultureInfo.InvariantCulture).Length;
+                return 10;
             }
 
-            return (byte)number;
+            number = Math.Abs(number);
+
+            if (number >= 0 && number < 10)
+            {
+                return 1;
+            }
+            else if (number >= 10 && number < 100)
+            {
+                return 2;
+            }
+            else if (number >= 100 && number < 1000)
+            {
+                return 3;
+            }
+            else if (number >= 1000 && number < 10000)
+            {
+                return 4;
+            }
+            else if (number >= 10000 && number < 100000)
+            {
+                return 5;
+            }
+            else if (number >= 100000 && number < 1000000)
+            {
+                return 6;
+            }
+            else if (number >= 1000000 && number < 10000000)
+            {
+                return 7;
+            }
+            else if (number >= 10000000 && number < 100000000)
+            {
+                return 8;
+            }
+            else if (number >= 100000000 && number < 1000000000)
+            {
+                return 9;
+            }
+            else 
+            {
+                return 10;
+            }
         }
         
         /// <summary>
@@ -382,13 +419,21 @@ namespace SelectionStatments
         /// <returns>The length of the integer's string presentation.</returns>
         public static byte GetLengthWithSwitchExpression(int number)
         {
-           int res = number switch
+            return number switch
             {
-                int.MinValue => Math.Abs(number + 1).ToString(CultureInfo.InvariantCulture).Length,
-                int.MaxValue => Math.Abs(number).ToString(CultureInfo.InvariantCulture).Length,
-                _ => Math.Abs(number).ToString(CultureInfo.InvariantCulture).Length
+                int.MinValue => 10,
+                int.MaxValue => 10,
+                _ when Math.Abs(number) >= 0 && Math.Abs(number) < 10 => 1,
+                _ when Math.Abs(number) >= 10 && Math.Abs(number) < 100 => 2,
+                _ when Math.Abs(number) >= 100 && Math.Abs(number) < 1000 => 3,
+                _ when Math.Abs(number) >= 1000 && Math.Abs(number) < 10000 => 4,
+                _ when Math.Abs(number) >= 10000 && Math.Abs(number) < 100000 => 5,
+                _ when Math.Abs(number) >= 100000 && Math.Abs(number) < 1000000 => 6,
+                _ when Math.Abs(number) >= 1000000 && Math.Abs(number) < 10000000 => 7,
+                _ when Math.Abs(number) >= 10000000 && Math.Abs(number) < 100000000 => 8,
+                _ when Math.Abs(number) >= 100000000 && Math.Abs(number) < 1000000000 => 9,
+                _ => 10,
             };
-           return (byte)res;
         }
         
         /// <summary>
