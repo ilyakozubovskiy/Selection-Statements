@@ -358,58 +358,57 @@ namespace SelectionStatments
         /// <param name="number">Source integer.</param>
         /// <returns>The length of the integer's string presentation.</returns>
         public static byte GetLengthWithCascadedIfElse(int number)
-        {   
-            if (number == int.MinValue)
-            {
-                return 10;
-            }
-            else if (number == int.MaxValue)
+        {
+            if (number == int.MinValue || number == int.MaxValue)
             {
                 return 10;
             }
 
+            byte length;
             number = Math.Abs(number);
 
             if (number >= 0 && number < 10)
             {
-                return 1;
+                length = 1;
             }
             else if (number >= 10 && number < 100)
             {
-                return 2;
+                length = 2;
             }
             else if (number >= 100 && number < 1000)
             {
-                return 3;
+                length = 3;
             }
             else if (number >= 1000 && number < 10000)
             {
-                return 4;
+                length = 4;
             }
             else if (number >= 10000 && number < 100000)
             {
-                return 5;
+                length = 5;
             }
             else if (number >= 100000 && number < 1000000)
             {
-                return 6;
+                length = 6;
             }
             else if (number >= 1000000 && number < 10000000)
             {
-                return 7;
+                length = 7;
             }
             else if (number >= 10000000 && number < 100000000)
             {
-                return 8;
+                length = 8;
             }
             else if (number >= 100000000 && number < 1000000000)
             {
-                return 9;
+                length = 9;
             }
             else 
             {
-                return 10;
+                length = 10;
             }
+
+            return length;
         }
         
         /// <summary>
